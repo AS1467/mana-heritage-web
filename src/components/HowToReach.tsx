@@ -1,10 +1,10 @@
 
 import React, { useEffect, useRef } from "react";
-import { Airplane, Train, Car } from "lucide-react";
+import { Airplay, Train, Car } from "lucide-react";
 
 const transportOptions = [
   {
-    icon: <Airplane className="w-8 h-8" />,
+    icon: <Airplay className="w-8 h-8" />,
     title: "By Air",
     details: [
       "Nearest Airport: Coimbatore International Airport (80 km)",
