@@ -1,39 +1,9 @@
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real scenario, you'd handle form submission to a server here
-    console.log("Form submitted:", formData);
-    setFormSubmitted(true);
-    
-    // Reset form after submission
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: ""
-      });
-      setFormSubmitted(false);
-    }, 5000);
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,85 +40,6 @@ const Contact = () => {
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-md reveal">
-            <h3 className="font-playfair text-2xl font-semibold mb-6">Send us a Message</h3>
-            
-            {formSubmitted ? (
-              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md mb-6">
-                Thank you for your message! We'll get back to you soon.
-              </div>
-            ) : null}
-            
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kerala-earth/50"
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kerala-earth/50"
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kerala-earth/50"
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kerala-earth/50"
-                ></textarea>
-              </div>
-              
-              <button 
-                type="submit" 
-                className="btn-primary w-full"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-          
           {/* Contact Info & Booking */}
           <div className="flex flex-col h-full">
             <div className="bg-white p-8 rounded-lg shadow-md mb-8 reveal">

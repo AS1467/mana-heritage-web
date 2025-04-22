@@ -41,50 +41,30 @@ const Navbar = () => {
         <div>
           <a 
             href="#home" 
-            className="font-playfair text-2xl md:text-3xl font-bold text-kerala-green-dark"
+            className="font-playfair text-2xl md:text-3xl font-bold text-kerala-green-dark tracking-wide"
           >
             Varikasheri Mana
           </a>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
-          <button 
-            onClick={() => scrollToSection("home")} 
-            className="font-medium hover:text-kerala-earth transition-colors"
-          >
-            Home
-          </button>
-          <button 
-            onClick={() => scrollToSection("about")} 
-            className="font-medium hover:text-kerala-earth transition-colors"
-          >
-            About
-          </button>
-          <button 
-            onClick={() => scrollToSection("facilities")} 
-            className="font-medium hover:text-kerala-earth transition-colors"
-          >
-            Facilities
-          </button>
-          <button 
-            onClick={() => scrollToSection("reach")} 
-            className="font-medium hover:text-kerala-earth transition-colors"
-          >
-            How to Reach
-          </button>
-          <button 
-            onClick={() => scrollToSection("attractions")} 
-            className="font-medium hover:text-kerala-earth transition-colors"
-          >
-            Attractions
-          </button>
-          <button 
-            onClick={() => scrollToSection("contact")} 
-            className="font-medium hover:text-kerala-earth transition-colors"
-          >
-            Contact
-          </button>
+        <div className="hidden md:flex space-x-8 bg-kerala-earth/10 px-6 py-3 rounded-full">
+          {[
+            { id: "home", label: "Home" },
+            { id: "about", label: "About" },
+            { id: "facilities", label: "Facilities" },
+            { id: "reach", label: "How to Reach" },
+            { id: "attractions", label: "Attractions" },
+            { id: "contact", label: "Contact" }
+          ].map(({ id, label }) => (
+            <button 
+              key={id}
+              onClick={() => scrollToSection(id)} 
+              className="font-medium hover:text-kerala-earth transition-colors text-kerala-earth-dark"
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
@@ -108,42 +88,22 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-sm shadow-md">
           <div className="flex flex-col space-y-4 p-4">
-            <button 
-              onClick={() => scrollToSection("home")} 
-              className="font-medium hover:text-kerala-earth transition-colors py-2"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection("about")} 
-              className="font-medium hover:text-kerala-earth transition-colors py-2"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection("facilities")} 
-              className="font-medium hover:text-kerala-earth transition-colors py-2"
-            >
-              Facilities
-            </button>
-            <button 
-              onClick={() => scrollToSection("reach")} 
-              className="font-medium hover:text-kerala-earth transition-colors py-2"
-            >
-              How to Reach
-            </button>
-            <button 
-              onClick={() => scrollToSection("attractions")} 
-              className="font-medium hover:text-kerala-earth transition-colors py-2"
-            >
-              Attractions
-            </button>
-            <button 
-              onClick={() => scrollToSection("contact")} 
-              className="font-medium hover:text-kerala-earth transition-colors py-2"
-            >
-              Contact
-            </button>
+            {[
+              { id: "home", label: "Home" },
+              { id: "about", label: "About" },
+              { id: "facilities", label: "Facilities" },
+              { id: "reach", label: "How to Reach" },
+              { id: "attractions", label: "Attractions" },
+              { id: "contact", label: "Contact" }
+            ].map(({ id, label }) => (
+              <button 
+                key={id}
+                onClick={() => scrollToSection(id)} 
+                className="font-medium hover:text-kerala-earth transition-colors py-2 text-left"
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       )}
